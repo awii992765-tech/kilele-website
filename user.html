@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="5s">
+    <title>Sign In</title>
+    <link href="https://fonts.googleapis.com/css?family=Saira:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Sora:100,200,300,regular,500,600,700,800" rel="stylesheet" />
+    <link rel="stylesheet" href="user.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container">
+            <div class="sign-in-container">
+                <form action="#">
+                <center><h1>Sign In</h1></center>
+                <center><div class="social-container">
+                    <a href="#" class="social"><i class="fa-brands fa-google"></i></a>
+                    <a href="#" class="social"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="social"><i class="fa-brands fa-instagram"></i></a>
+                </div></center>
+                <center><span>Or use your Email</span></center>
+                <div class="form-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" placeholder="Full name" required>
+                </div>
+                <div class="form-group">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="Password" id="registerPassword" required>
+                </div>
+                <center><span> Don't have an account? <a class="sign-up" href="signup.html">Sign Up</a></span></center>
+                <center><a href="kilele.html"><button>Sign In</button></a></center>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // Form validation
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function validatePassword(password) {
+    return password.length >= 6;
+}
+
+function validateFullName(name) {
+    return name.trim().length >= 2;
+}
+
+// Sign In functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.sign-in-container form');
+    
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleSignIn();
+        });
+    }
+
+    // Get form inputs
+    const fullNameInput = document.querySelector('input[placeholder="Full name"]');
+    const emailInput = document.querySelector('input[placeholder="Email"]');
+    const passwordInput = document.querySelector('#registerPassword');
+
+    // Real-time validation
+    if (fullNameInput) {
+        fullNameInput.addEventListener('blur', function() {
+            if (!validateFullName(this.value)) {
+                this.style.borderColor = '#e74c3c';
+            } else {
+                this.style.borderColor = '#27ae60';
+            }
+        });
+    }
+
+    if (emailInput) {
+        emailInput.addEventListener('blur', function() {
+            if (!validateEmail(this.value)) {
+                this.style.borderColor = '#e74c3c';
+            } else {
+                this.style.borderColor = '#27ae60';
+            }
+        });
+    }
+
+    if (passwordInput) {
+        passwordInput.addEventListener('blur', function() {
+            if (!validatePassword(this.value)) {
+                this.style.borderColor = '#e74c3c';
+            } else {
+                this.style.borderColor = '#27ae60';
+            }
+        });
+    }
+});
+
+// Handle Sign In
+function handleSignIn() {
+    const fullName = document.querySelector('input[placeholder="Full name"]').value;
+    const email = document.querySelector('input[placeholder="Email"]').value;
+    const password = document.querySelector('#registerPassword').value;
+
+    // Validate all fields
+    if (!validateFullName(fullName)) {
+        alert('Please enter a valid full name (at least 2 characters)');
+        return;
+    }
+
+    if (!validateEmail(email)) {
+        alert('Please enter a valid email address');
+        return;
+    }
+
+    if (!validatePassword(password)) {
+        alert('Password must be at least 6 characters long');
+        return;
+    }
+
+    // Store user data in localStorage
+    const userData = {
+        fullName: fullName,
+        email: email,
+        signInDate: new Date().toLocaleString()
+    };
+
+    localStorage.setItem('user', JSON.stringify(userData));
+    console.log('User signed in:', userData);
+    
+    // Show success message
+    alert('Sign in successful!');
+    
+    // Redirect to home page
+    window.location.href = 'kilele.html';
+}
+
+// Social login handlers
+document.querySelectorAll('.social').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const provider = this.querySelector('i').className;
+        console.log('Social login attempted with:', provider);
+        alert('Social login integration coming soon!');
+    });
+});
+
+// Check if user is already logged in
+function checkUserSession() {
+    const user = localStorage.getItem('user');
+    if (user) {
+        console.log('User already signed in:', JSON.parse(user));
+        return true;
+    }
+    return false;
+}
+
+// Logout functionality
+function logout() {
+    localStorage.removeItem('user');
+    console.log('User logged out');
+    window.location.href = 'user.html';
+}
+
+// Get current user
+function getCurrentUser() {
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : null;
+}
+</script>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="5s">
+    <title>Sign Up</title>
+    <link href="https://fonts.googleapis.com/css?family=Saira:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Sora:100,200,300,regular,500,600,700,800" rel="stylesheet" />
+    <link rel="stylesheet" href="signup.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container">
+            <div class="sign-up-container">
+                <form action="#">
+                    <center><h1>Create your User ID</h1></center>
+                    <div class="form-group">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="text" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="text" placeholder="Last Name" required>
+                    </div>
+                <center><span>Already have an account? <a class="sign-in" href="user.html">Sign In</a></span></center>
+                <center><a href="kilele.html"><button>Sign Up</button></a></center>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // Form validation functions
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function validateFirstName(firstName) {
+    return firstName.trim().length >= 2;
+}
+
+function validateLastName(lastName) {
+    return lastName.trim().length >= 2;
+}
+
+// Check if email already exists
+function isEmailTaken(email) {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    return users.some(user => user.email === email);
+}
+
+// Sign Up functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('.sign-up-container form');
+    
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleSignUp();
+        });
+    }
+
+    // Get form inputs
+    const emailInput = document.querySelector('input[placeholder="Your Email"]');
+    const firstNameInput = document.querySelector('input[placeholder="First Name"]');
+    const lastNameInput = document.querySelector('input[placeholder="Last Name"]');
+
+    // Real-time email validation
+    if (emailInput) {
+        emailInput.addEventListener('blur', function() {
+            if (!validateEmail(this.value)) {
+                this.style.borderColor = '#e74c3c';
+            } else if (isEmailTaken(this.value)) {
+                this.style.borderColor = '#e74c3c';
+                showErrorMessage('This email is already registered');
+            } else {
+                this.style.borderColor = '#27ae60';
+            }
+        });
+    }
+
+    // Real-time first name validation
+    if (firstNameInput) {
+        firstNameInput.addEventListener('blur', function() {
+            if (!validateFirstName(this.value)) {
+                this.style.borderColor = '#e74c3c';
+            } else {
+                this.style.borderColor = '#27ae60';
+            }
+        });
+    }
+
+    // Real-time last name validation
+    if (lastNameInput) {
+        lastNameInput.addEventListener('blur', function() {
+            if (!validateLastName(this.value)) {
+                this.style.borderColor = '#e74c3c';
+            } else {
+                this.style.borderColor = '#27ae60';
+            }
+        });
+    }
+});
+
+// Handle Sign Up
+function handleSignUp() {
+    const email = document.querySelector('input[placeholder="Your Email"]').value;
+    const firstName = document.querySelector('input[placeholder="First Name"]').value;
+    const lastName = document.querySelector('input[placeholder="Last Name"]').value;
+
+    // Validate all fields
+    if (!validateEmail(email)) {
+        alert('Please enter a valid email address');
+        return;
+    }
+
+    if (isEmailTaken(email)) {
+        alert('This email is already registered. Please use a different email or sign in.');
+        return;
+    }
+
+    if (!validateFirstName(firstName)) {
+        alert('Please enter a valid first name (at least 2 characters)');
+        return;
+    }
+
+    if (!validateLastName(lastName)) {
+        alert('Please enter a valid last name (at least 2 characters)');
+        return;
+    }
+
+    // Create new user object
+    const newUser = {
+        id: Date.now(),
+        email: email,
+        firstName: firstName,
+        lastName: lastName,
+        fullName: `${firstName} ${lastName}`,
+        signUpDate: new Date().toLocaleString(),
+        status: 'active'
+    };
+
+    // Get existing users or create new array
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    
+    // Add new user
+    users.push(newUser);
+    
+    // Save to localStorage
+    localStorage.setItem('users', JSON.stringify(users));
+    
+    // Set current user
+    localStorage.setItem('currentUser', JSON.stringify(newUser));
+    
+    console.log('New user registered:', newUser);
+    
+    // Show success message
+    alert(`Welcome ${firstName}! Your User ID has been created successfully.`);
+    
+    // Redirect to home page
+    window.location.href = 'kilele.html';
+}
+
+// Show error message
+function showErrorMessage(message) {
+    console.error(message);
+    const errorDiv = document.createElement('div');
+    errorDiv.style.color = '#e74c3c';
+    errorDiv.style.fontSize = '12px';
+    errorDiv.textContent = message;
+    return errorDiv;
+}
+
+// Get all registered users
+function getAllUsers() {
+    return JSON.parse(localStorage.getItem('users')) || [];
+}
+
+// Get user by email
+function getUserByEmail(email) {
+    const users = getAllUsers();
+    return users.find(user => user.email === email) || null;
+}
+
+// Delete user account
+function deleteUserAccount(email) {
+    const users = getAllUsers();
+    const filteredUsers = users.filter(user => user.email !== email);
+    localStorage.setItem('users', JSON.stringify(filteredUsers));
+    localStorage.removeItem('currentUser');
+    console.log('User account deleted');
+}
+
+// Update user profile
+function updateUserProfile(email, updates) {
+    const users = getAllUsers();
+    const userIndex = users.findIndex(user => user.email === email);
+    
+    if (userIndex !== -1) {
+        users[userIndex] = { ...users[userIndex], ...updates };
+        localStorage.setItem('users', JSON.stringify(users));
+        localStorage.setItem('currentUser', JSON.stringify(users[userIndex]));
+        console.log('User profile updated:', users[userIndex]);
+        return users[userIndex];
+    }
+    
+    return null;
+}
+
+// Get current user
+function getCurrentUser() {
+    return JSON.parse(localStorage.getItem('currentUser')) || null;
+}
+</script>
+</html>

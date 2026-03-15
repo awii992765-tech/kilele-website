@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="5s">
+    <meta name="description" content="Official Kilele Waters page">
+    <link href="https://fonts.googleapis.com/css?family=Saira:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Sora:100,200,300,regular,500,600,700,800" rel="stylesheet" />
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel="stylesheet" href="about.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>About Kilele Water</title>
+        <header>
+    <!-- Navigation Bar -->
+        <nav>
+            <div class="nav-container">
+                <div class="logo"><img src="kilele-water-logo.png" class="kw-logo"></div>
+                <div id="menu-icon" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <center><ul class="nav-links">
+                    <li><a href="kilele.html"><i class="fi fi-sr-home"></i>Home</a></li>
+                    <li><a href="about.html"><i class="fi fi-sr-info"></i>About</a></li>
+                    <li><a href="contact.html"><i class="fi fi-sr-phone-call"></i>Contact</a></li>
+                    <li><a href="user.html"><i class="fi fi-sr-user"></i>Login</a></li></center>
+                </ul>
+            </div>
+    <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-close">
+                <i class="fas fa-times"></i>
+            </div>
+            <ul class="sidebar-links">
+                <li><a href="kilele.html"><i class="fi fi-sr-home"></i>Home</a></li>
+                <li><a href="about.html"><i class="fi fi-sr-info"></i>About</a></li>
+                <li><a href="contact.html"><i class="fi fi-sr-phone-call"></i>Contact</a></li>
+                <li><a href="user.html"><i class="fi fi-sr-user"></i>Login</a></li>
+                <li><a href="p-policy.html"><i class="fi fi-sr-shield-check"></i>Privacy Policy</a></li>
+                <li><a href="c-policy.html"><i class="fi fi-sr-cookie"></i>Cookie Policy</a></li>
+                <li><a href="service.html"><i class="fi fi-sr-document"></i>Terms of Service</a></li>
+            </ul>
+        </aside>
+        </nav>
+    </header>
+</head>
+<body>
+    <center><div class="container">
+        <div class="purification">
+            <p>As a company, we are mindful of our customers' health and wellness. And that is why we have put in place high-grade water purification systems that produce pure drinking water with exceptional quality and refreshing taste.</p>
+        </div>
+        <div class ="production">
+            <p>Here at Elmic Limited, we have installed a production capacity of about 6000 liters per day. We, therefore, can confidently guarantee all our customers of consistent and reliable water supply including high demand events like concerts, parties, functions etc.</p>
+        </div>
+        <div class="certification">
+            <p>All our processes and bottled water have been duly certified by the Kenya Bureau of Standards (KEBS). To this end, we have KS EAS 153 for packaged drinking water standards as well as KS 459 part 9: Code of hygiene standards. So, when gulping a bottle of Kilele Water, be rest assured that you are enjoying the best in quality and safety!</p>
+        </div>
+    </div></center>
+<!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat">
+                <div class="stat-number"><b>50K+</b></div>
+                <div class="stat-label">Active Customers</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number"><b>99%</b></div>
+                <div class="stat-label">Uptime Guarantee</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number"><b>8+</b></div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number"><b>24/7</b></div>
+                <div class="stat-label">Customer Support</div>
+            </div>
+        </div>
+    </section>
+
+<!--about Section-->
+    <section class="about">
+        <div class="about-container">
+            <img src="abt-pic.png" class="about-pic">
+        </div>
+    </section>
+</body>
+<script>
+// Smooth scroll to section
+    function smoothScroll(targetId) {
+        const element = document.getElementById(targetId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+// Mobile menu toggle
+    function toggleMobileMenu() {
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar) {
+            sidebar.classList.toggle('active');
+        }
+    }
+
+// Sidebar event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('menu-icon');
+        const sidebarClose = document.querySelector('.sidebar-close');
+        const sidebarLinks = document.querySelectorAll('.sidebar-links a');
+        const sidebar = document.getElementById('sidebar');
+
+        // Toggle sidebar on hamburger click
+        if (menuToggle) {
+            menuToggle.addEventListener('click', toggleMobileMenu);
+        }
+
+        // Close sidebar on X click
+        if (sidebarClose) {
+            sidebarClose.addEventListener('click', function() {
+                sidebar.classList.remove('active');
+            });
+        }
+
+        // Close sidebar when a link is clicked
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                sidebar.classList.remove('active');
+            });
+        });
+
+        // Close sidebar when clicking outside of it
+        document.addEventListener('click', function(event) {
+            if (sidebar && menuToggle) {
+                const isClickInsideSidebar = sidebar.contains(event.target);
+                const isClickOnMenu = menuToggle.contains(event.target);
+                if (!isClickInsideSidebar && !isClickOnMenu && sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+    });
+// Back to top button
+    const topBtn = document.createElement('button');
+    topBtn.innerHTML = 'To Top';
+    topBtn.style.cssText = `
+        position: fixed;
+        bottom: 50px;
+        right: 20px;
+        font-size: 15px;
+        font-family: 'Saira', sans-serif;
+        padding: 10px 15px;
+        background: linear-gradient(to right, cyan, rgb(141, 216, 243));
+        color: white;
+        border: none;
+        transition: all 0.4s ease-in-out;
+        border-radius: 10px;
+        cursor: pointer;
+        z-index: 999;
+    `;
+    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    topBtn.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-5px)';
+        this.style.boxShadow = '0 7px 20px rgba(67, 97, 238, 0.4)';
+    });
+    topBtn.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+        this.style.background = 'linear-gradient(to right, cyan, rgb(141, 216, 243))';
+    });
+    document.body.appendChild(topBtn);
+</script>
+</html>

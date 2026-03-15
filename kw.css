@@ -1,0 +1,580 @@
+@keyframes fade-in {
+    from { scale: .5; opacity: 1; }
+    to { scale: 1; opacity: 1; }
+}
+@keyframes float {
+    0%,
+    100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-10px);
+    }
+}
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes show{
+    0%,
+    49.99%{
+        opacity: 0;
+        z-index: 1;
+    }
+    50%,
+    100%{
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+html{
+    font-family: "Saira", sans-serif;
+    scroll-behavior: smooth;
+    margin: 0;
+    animation: fadeIn 0.6s ease-out;
+    padding: 0;
+    background-color: white;
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+}
+body{
+    margin: 0;
+    height: auto;
+    line-height: 1.6;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+}
+#menu-icon{
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+}
+#menu-icon:hover{
+    transform: scale(1.2);
+    color: black;
+}
+.menu-toggle {
+    padding: 10px 20px;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    left: -50%;
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(to bottom, cyan, rgb(141, 216, 243));
+    padding-top: 80px;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+    overflow-y: auto;
+    box-shadow: 2px 0 15px rgba(67, 97, 238, 0.3);
+}
+.sidebar.active {
+    left: 0;
+}
+.sidebar-close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+.sidebar-close:hover {
+    transform: scale(1.2);
+    color: black;
+}
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 20px 0;
+}
+.sidebar-links li {
+    margin: 0;
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.sidebar-links li:hover {
+    padding-left: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.sidebar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+}
+.sidebar-links a:hover {
+    color: black;
+}
+
+.nav-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, cyan, rgb(141, 216, 243));
+    width: 100%;
+    height: auto;
+    padding-top: 10px;
+}
+
+ul , li{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: 15px;
+    gap: 10px;
+}
+li:hover{
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+}
+a:hover{
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    color: black;
+}
+
+.nav-links{
+    color: white;
+    float: right;
+    margin-top: 20px;
+    letter-spacing: 1px;
+    margin-right: 5px;
+    transition: all 0.3s;
+    width: 100%;
+    height: auto;
+}
+
+.cta-button{
+    font-family: "Saira", sans-serif;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(to right, cyan, lightblue);
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 15px 45px;
+    letter-spacing: 1px;
+    transition: all 0.5s ease-in-out;
+    margin-top: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+}
+.cta-button:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 7px 20px rgba(67, 97, 238, 0.4);
+    background: black;
+}
+
+.p-main{
+    font-size: 23px;
+    letter-spacing: 0.5px;
+}
+.p-secondary{
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.kw-logo{
+    margin-left: 50px;
+    width: 30%;
+    height: auto;
+    margin-left: 50px;
+    animation: fade-in linear;
+    animation-timeline: view();
+}
+.heading{
+    font-family: "Sora", sans-serif;
+    font-size: 50px;
+    color: black;
+}
+h2{
+    font-family: "Sora", sans-serif;
+    font-size: 20px;
+    color: black;
+}
+h3{
+    font-family: "Sora", sans-serif;
+    font-size: 18px;
+    color: black;
+}
+
+.hero{
+    padding-top: 12%;
+    height: auto;
+    width: auto;
+    animation: fade-out linear;
+    animation-timeline: view();
+    animation-range: exit -100px;
+}
+
+@keyframes fade-out {
+    to { opacity: 0; }
+}
+
+.hero-bottle{
+    width: 40%;
+    object-fit: contain;
+    image-resolution: inherit;
+    image-rendering: crisp-edges;
+    animation: hero-bottle linear;
+    animation-timeline: view();
+    animation-range-start: cover;
+    animation-range-end: 600px;
+}
+
+@keyframes hero-bottle{
+    from { scale: .8; opacity: 1; }
+    to { scale: 1; opacity: 1; }
+}
+
+.about{
+    height: auto;
+    width: 100%;
+    padding-top: 5%;
+}
+
+.price{
+    padding-top: 5%;
+    padding-bottom: 5%;
+    height: auto;
+    width: 100%;
+}
+
+.services{
+    height: auto;
+}
+.services-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 80%;
+    margin: 0 auto;
+    padding-top: 5%;
+    justify-content: space-between;
+}
+.more-services-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 80%;
+    margin: 0 auto;
+    padding-top: 5%;
+    justify-content: space-between;
+}
+.service-card{
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    height: 300px;
+    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4);
+    transition: all 0.4s ease-in-out;
+}
+.service-card:hover{
+    transform: translateX(8px);
+    box-shadow: 0 7px 20px rgba(67, 97, 238, 0.4);
+}
+.house-icon{
+    width: 25%;
+}
+.industry-icon{
+    width: 25%;
+}
+.party-icon{
+    width: 25%;
+}
+.catering-icon{
+    width: 25%;
+}
+
+.contact{
+    padding-top: 5%;
+    height: auto;
+}
+.contact-grid{
+    max-width: 80%;
+    margin: 0 auto;
+    display: grid;
+    padding-top: 2%;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-content: space-evenly;
+}
+.contact-item{
+    border-radius: 15px;
+    padding: 30px;
+    height: 200px;
+    transition: all 0.4s ease-in-out;
+}
+.water-icon{
+    width: 45%;
+}
+.kebs-icon{
+    width: 31%;
+}
+.quality-icon{
+    width: 45%;
+}
+.p-contact{
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+
+.partners{
+    height: auto;
+}
+.partner-card{
+    transition: all 0.4s ease-in-out;
+}
+.partners-grid{
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    padding-top: 3%;
+    height: auto;
+    gap: 18px;
+    justify-content: space-evenly;
+    padding-left: 15%;
+}
+.more-partners-grid{
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    padding-top: 3%;
+    height: auto;
+    gap: 15px;
+    justify-content: space-evenly;
+    padding-left: 25%;
+}
+.mustek-icon{
+    width: 100%;
+}
+.skylux-icon{
+    width: 48%;
+}
+.marthaloo-icon{
+    width: 35%;
+}
+.conrad-icon{
+    width: 130%;
+}
+
+footer{
+    background: black;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    height: auto;
+}
+.socials{
+    margin-left: 30px;
+    padding-bottom: 40px;
+}
+.socials a {
+    border: 2px solid #e9ecef;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 8px;
+    height: 40px;
+    width: 40px;
+    color: white;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+.socials a:hover{
+    background-color: white;
+    color: rgb(55, 221, 221);
+    border-color: black;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+    text-decoration: none;
+}
+.footer-content{
+    margin-left: 30px;
+    margin-right: 30px;
+    border-bottom: white solid 1px;
+}
+.footer-content h2{
+    font-family: "Sora", sans-serif;
+    font-size: 20px;
+    color: white;
+    padding-left: 50px;
+}
+.footer-bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: white;
+    padding-top: 40px;
+    line-height: 10px;
+    padding-bottom: 20px;
+    height: auto;
+}
+.footer-bottom a:hover{
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    color: rgb(55, 221, 221);
+}
+.copyright{
+    text-align: center;
+    justify-content: space-between;
+    font-size: 15px;
+    color: white;
+    padding-top: 10px;
+    line-height: 10px;
+    margin: 0 auto;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 1080px) {
+    #menu-icon {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .kw-logo {
+        margin-left: 15px;
+        width: 40%;
+    }
+
+    .sidebar {
+        width: 100%;
+        left: -100%;
+        font-size: 30px;
+    }
+
+    .sidebar-links{
+        padding-bottom: 15%;
+        font-size: 50px;
+    }
+
+    .heading {
+        font-size: 35px;
+    }
+
+    .p-main {
+        font-size: 18px;
+    }
+
+    .p-secondary {
+        font-size: 16px;
+    }
+
+    .hero {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .about {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .price{
+        width: 90%;
+        margin: 0 auto;
+        
+    }
+
+    .hero {
+        padding-top: 25%;
+    }
+
+    .hero-bottle {
+        width: 70%;
+    }
+}
+
+@media (max-width: 1080px) {
+    #menu-icon {
+        font-size: 2.5rem;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding-top: 60px;
+    }
+
+    .sidebar-close {
+        top: 15px;
+        right: 15px;
+        font-size: 2.5rem;
+    }
+
+    .heading {
+        font-size: 35px;
+    }
+    
+    .p-main {
+        font-size: 18px;
+    }
+
+    .p-secondary {
+        font-size: 18px;
+    }
+
+    .sidebar-links a {
+        font-size: 20px;
+    }
+
+    .partners-grid,
+    .more-partners-grid {
+        padding-left: 50px;
+        justify-content: center;
+    }
+}
+

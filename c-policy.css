@@ -1,0 +1,337 @@
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes float {
+    0%,
+    100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-10px);
+    }
+}
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes show{
+    0%,
+    49.99%{
+        opacity: 0;
+        z-index: 1;
+    }
+    50%,
+    100%{
+        opacity: 1;
+        z-index: 5;
+    }
+}
+html{
+    font-family: "Saira", sans-serif;
+    scroll-behavior: smooth;
+    margin: 0;
+    animation: fadeIn 0.6s ease-out;
+    padding: 0;
+    background-color: white;
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+}
+body {
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+    height: auto;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+}
+
+#menu-icon{
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+}
+#menu-icon:hover{
+    transform: scale(1.2);
+    color: black;
+}
+.menu-toggle {
+    padding: 10px 20px;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    left: -50%;
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(to bottom, cyan, rgb(141, 216, 243));
+    padding-top: 80px;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+    overflow-y: auto;
+    box-shadow: 2px 0 15px rgba(67, 97, 238, 0.3);
+}
+.sidebar.active {
+    left: 0;
+}
+.sidebar-close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+.sidebar-close:hover {
+    transform: scale(1.2);
+    color: black;
+}
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 25px 0;
+}
+.sidebar-links li {
+    margin: 0;
+    padding: 0px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.sidebar-links li:hover {
+    padding-left: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.sidebar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+}
+.sidebar-links a:hover {
+    color: black;
+}
+.nav-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, cyan, rgb(141, 216, 243));
+    width: 100%;
+    height: auto;
+    padding-top: 10px;
+}
+ul , li{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: 15px;
+    gap: 40px;
+}
+li:hover{
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.container {
+    background-color: white;
+    padding: 40px;
+    box-shadow: 0 15px 30px rgba(67, 97, 238, 0.4);
+    border-radius: 20px;
+    overflow-x: hidden;
+    margin-top: 18%;
+}
+.container ul , li{
+    list-style: none;
+    display: list-item;
+    margin: 15px;
+    gap: 40px;
+}
+.container li:hover{
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.container a{
+    text-decoration: underline;
+    color: black;
+}
+.container a:hover{
+    color: darkslategrey;
+}
+a{
+    text-decoration: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+}
+a:hover{
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    color: black;
+}
+.nav-links{
+    color: white;
+    float: right;
+    margin-top: 20px;
+    letter-spacing: 1px;
+    margin-right: 5px;
+    transition: all 0.3s;
+    width: 100%;
+    height: auto;
+}
+.kw-logo{
+    margin-left: 50px;
+    width: 30%;
+    height: auto;
+    margin-left: 50px;
+}
+.container {
+    background-color: white;
+    padding: 40px;
+    box-shadow: 0 15px 30px rgba(67, 97, 238, 0.4);
+    border-radius: 20px;
+    overflow-x: hidden;
+    margin-top: 18%;
+}
+h1 {
+    font-family: 'Sora', sans-serif;
+    border-bottom: cyan 3px solid ;
+    padding-bottom: 10px;
+    font-size: 40px;
+    text-align: center;
+}
+h2 {
+    font-family: 'Sora', sans-serif;
+    margin-top: 30px;
+}
+h3 {
+    font-family: 'Sora', sans-serif;
+    margin-top: 20px;
+}
+.last-updated {
+    color: #7f8c8d;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    overflow: hidden;
+    border-radius: 15px;
+}
+thead {
+    background: linear-gradient(to right, cyan, lightblue);
+    color: white;
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+tbody{
+    background-color: rgb(240, 240, 240);
+}
+tbody tr:hover {
+    background-color: #f5f5f5;
+}
+.highlight {
+    background-color: #e3f2fd;
+    padding: 15px;
+    border-left: 4px solid #3498db;
+    margin: 20px 0;
+}
+/* Mobile Responsive Styles */
+@media (max-width: 1080px) {
+    #menu-icon {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .container {
+        margin: 0 auto;
+        margin-top: 30%;
+        margin-bottom: 5%;
+    }
+
+    body {
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .kw-logo {
+        margin-left: 15px;
+        width: 40%;
+    }
+
+    .sidebar {
+        width: 100%;
+        left: -100%;
+        font-size: 30px;
+    }
+
+    .p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1080px) {
+    #menu-icon {
+        font-size: 2.5rem;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding-top: 60px;
+        font-size: 20px;
+    }
+
+    .sidebar-close {
+        top: 15px;
+        right: 15px;
+        font-size: 2.5rem;
+    }
+
+    .p {
+        font-size: 16px;
+    }
+
+    .sidebar-links a {
+        font-size: 18px;
+    }
+}
